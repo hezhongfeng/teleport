@@ -1,0 +1,17 @@
+{
+  "name": "teleport-demo",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.11"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.6.2",
+    "@vue/compiler-sfc": "^3.2.11",
+    "vite": "^2.5.6"
+  }
+}
