@@ -5,12 +5,14 @@ const instances = [];
 let seed = 1;
 
 const Message = function (params) {
-  const id = 'message_' + seed++;
-
   const container = document.createElement('div');
 
-  container.className = `container_${id}`;
+  let verticalOffset = 20;
 
+  for (const instance of instances) {
+    verticalOffset += instance.component.ctx.ins.offsetHeight + 16;
+  }
+  params.offset = verticalOffset;
   const vm = createVNode(MessageConstructor, params);
 
   render(vm, container);

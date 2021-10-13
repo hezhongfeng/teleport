@@ -30,11 +30,12 @@ const onDialog = () => {
 };
 
 const onMessage = () => {
-  TMessage({ message: '这是一条消息' });
+  TMessage({ message: '这是一条Message消息' });
 };
 </script>
 
 <style>
 .home {
+  display: flex;
 }
 </style>
