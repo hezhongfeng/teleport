@@ -2,7 +2,6 @@ import { createVNode, render } from 'vue';
 import MessageConstructor from './index.vue';
 
 const instances = [];
-let seed = 1;
 
 const Message = function (params) {
   const container = document.createElement('div');
@@ -12,6 +11,8 @@ const Message = function (params) {
   for (const instance of instances) {
     verticalOffset += instance.component.ctx.ins.offsetHeight + 16;
   }
+
+  verticalOffset += 10;
   params.offset = verticalOffset;
   const vm = createVNode(MessageConstructor, params);
 

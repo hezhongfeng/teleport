@@ -1,9 +1,9 @@
 <template>
-  <transition name="t-message-fade">
-    <teleport to="#app">
-      <div ref="ins" class="t-message" :style="customStyle">{{ message }}</div>
-    </teleport>
-  </transition>
+  <teleport to="#app">
+    <transition name="t-message-fade">
+      <div v-show="visible" ref="ins" class="t-message" :style="customStyle">{{ message }}</div>
+    </transition>
+  </teleport>
 </template>
 
 <script lang="ts">
@@ -13,33 +13,28 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-import { Ref, ref, defineComponent, computed, onMounted, getCurrentInstance } from 'vue';
+import { ref, defineComponent, computed, onMounted } from 'vue';
 
 const props = defineProps({
   message: String,
   offset: Number
 });
-const isShow = ref(false);
+
+const visible = ref(false);
 
 const ins = ref(null);
 
 const show = () => {
-  isShow.value = true;
+  visible.value = true;
 };
 
-onMounted(() => {});
-
-const top = ref(0);
-
-setTimeout(() => {
-  top.value = props.offset;
-}, 0);
-
-// const internalInstance = getCurrentInstance();
+onMounted(() => {
+  show();
+});
 
 const customStyle = computed(() => {
   return {
-    top: `${top.value}px`
+    top: `${props.offset}px`
   };
 });
 </script>
