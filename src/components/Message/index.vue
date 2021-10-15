@@ -37,7 +37,7 @@ const show = () => {
 };
 
 const getOffsetHeight = () => {
-  return ins.offsetHeight || 0;
+  return ins.value.offsetHeight || 0;
 };
 
 const close = () => {
