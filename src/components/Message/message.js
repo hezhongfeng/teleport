@@ -12,9 +12,9 @@ const Message = options => {
 
   for (const { vnode } of instances) {
     // verticalOffset += vnode.component.proxy.ins.offsetHeight + 16;
-    console.log(vnode.component.proxy);
-    console.log(vnode.component.proxy.ins);
-    console.log(vnode.component.proxy.ins.offsetHeight);
+    console.log(vnode.component.proxy.getOffsetHeight);
+    // console.log(vnode.component.proxy.ins);
+    // console.log(vnode.component.proxy.ins.offsetHeight);
   }
 
   verticalOffset += 10;

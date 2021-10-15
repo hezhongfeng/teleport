@@ -36,6 +36,10 @@ const show = () => {
   visible.value = true;
 };
 
+const getOffsetHeight = () => {
+  return ins.offsetHeight || 0;
+};
+
 const close = () => {
   visible.value = false;
   clearTimeout(timer);
