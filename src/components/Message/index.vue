@@ -55,7 +55,7 @@ const startTimer = () => {
 };
 
 onMounted(() => {
-  console.log('ins.offsetHeight', ins.offsetHeight);
+  console.log('ins.offsetHeight', ins.value.offsetHeight);
 
   show();
   startTimer();
