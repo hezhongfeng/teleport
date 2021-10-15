@@ -1,7 +1,7 @@
 <template>
   <teleport to="#app">
-    <transition name="t-message-fade">
-      <div v-show="visible" ref="ins" class="t-message" :style="customStyle">{{ message }}</div>
+    <transition name="message-fade">
+      <div v-show="visible" ref="ins" class="message" :style="customStyle">{{ message }}</div>
     </transition>
   </teleport>
 </template>
@@ -63,7 +63,7 @@ const customStyle = computed(() => {
 </script>
 
 <style>
-.t-message {
+.message {
   box-sizing: border-box;
   position: fixed;
   left: 50%;
@@ -78,8 +78,8 @@ const customStyle = computed(() => {
   border-radius: 4px;
   padding: 15px 15px 20px 20px;
 }
-.t-message-fade-enter-from,
-.t-message-fade-leave-to {
+.message-fade-enter-from,
+.message-fade-leave-to {
   opacity: 0;
   transform: translate(-50%, -100%);
 }

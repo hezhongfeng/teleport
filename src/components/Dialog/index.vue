@@ -1,21 +1,23 @@
 <template>
   <teleport to="body">
     <transition name="dialog-fade">
-      <div class="dialog" v-show="visible">
-        <div class="el-dialog__header">
-          <slot name="title">
-            <span class="el-dialog__title">
-              {{ title }}
-            </span>
-          </slot>
-        </div>
-        <div class="el-dialog__body">
-          <slot></slot>
-        </div>
-        <div class="el-dialog__footer">
-          <slot name="footer">
-            <button @click="onClose">关闭</button>
-          </slot>
+      <div class="dialog-wrapper" v-show="visible">
+        <div class="dialog">
+          <div class="dialog-header">
+            <slot name="title">
+              <span class="dialog-title">
+                {{ title }}
+              </span>
+            </slot>
+          </div>
+          <div class="dialog-body">
+            <slot></slot>
+          </div>
+          <div class="dialog-footer">
+            <slot name="footer">
+              <button @click="onClose">关闭</button>
+            </slot>
+          </div>
         </div>
       </div>
     </transition>
@@ -44,12 +46,47 @@ const onClose = () => {
 </script>
 
 <style>
+.dialog-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  background-color: #00000080;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dialog-wrapper > .dialog {
+  width: 40%;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px;
+  color: rgb(48, 49, 51);
+}
+.dialog > .dialog-header {
+  font-size: 18px;
+  line-height: 1.4;
+  padding: 20px 20px 10px 20px;
+}
+.dialog > .dialog-body {
+  line-height: 1.4;
+  padding: 30px 20px 30px 20px;
+}
+.dialog > .dialog-footer {
+  line-height: 1.4;
+  padding: 20px 20px 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
 .dialog-fade-enter-active {
-  animation: dialog-fade-in var(--el-transition-duration);
+  animation: dialog-fade-in 0.3s;
 }
 
 .dialog-fade-leave-active {
-  animation: dialog-fade-out var(--el-transition-duration);
+  animation: dialog-fade-out 0.3s;
 }
 
 @keyframes dialog-fade-in {

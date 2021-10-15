@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <t-dialog title="我是Title" :visible="visible" @close="onClose"> 内容 </t-dialog>
-    <button @click="onDialog">dialogbtn</button>
+    <t-dialog title="LGD是不可战胜的" :visible="visible" @close="onClose"> 这是一段内容，萧瑟仙贝。 </t-dialog>
+    <button @click="onDialog">dialog</button>
+    <span style="width: 10px"></span>
     <button @click="onMessage">message</button>
   </div>
 </template>
