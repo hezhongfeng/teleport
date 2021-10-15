@@ -11,8 +11,7 @@ const Message = options => {
   const id = 'message_' + seed++;
 
   for (const { vnode } of instances) {
-    // verticalOffset += vnode.component.ctx.ins.offsetHeight + 16;
-    console.log(vnode);
+    verticalOffset += vnode.component.proxy.ins.offsetHeight + 16;
   }
 
   verticalOffset += 10;
