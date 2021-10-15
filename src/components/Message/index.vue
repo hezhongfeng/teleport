@@ -1,5 +1,5 @@
 <template>
-  <teleport to="#app">
+  <teleport to="body">
     <transition name="message-fade">
       <div v-show="visible" ref="ins" class="message" :style="customStyle">{{ message }}</div>
     </transition>

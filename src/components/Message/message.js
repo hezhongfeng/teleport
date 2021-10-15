@@ -11,8 +11,7 @@ const Message = options => {
   const id = 'message_' + seed++;
 
   for (const { vnode } of instances) {
-    // verticalOffset += vnode.component.proxy.ins.offsetHeight + 16;
-    console.log(vnode.component.proxy);
+    verticalOffset += vnode.component.proxy.ins.offsetHeight + 16;
   }
 
   verticalOffset += 10;
@@ -31,6 +30,7 @@ const Message = options => {
     nextTick(() => {
       setTimeout(() => {
         render(null, _container);
+        document.body.removeChild(_container);
       }, 300);
     });
 
