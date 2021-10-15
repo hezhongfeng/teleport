@@ -16,6 +16,8 @@ const Message = options => {
     console.log(vnode);
     console.log(vnode.component);
     console.log(vnode.component.proxy);
+    console.log(vnode.component.refs.ins.offsetHeight);
+
     // console.log(vnode.component.proxy.getOffsetHeight);
     // console.log(vnode.component.proxy.ins);
     // console.log(vnode.component.proxy.ins.offsetHeight);
