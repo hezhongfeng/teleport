@@ -1,5 +1,5 @@
 <template>
-  <teleport to="body">
+  <teleport to="#app">
     <transition name="message-fade">
       <div v-show="visible" ref="ins" class="message" :style="customStyle">{{ message }}</div>
     </transition>
@@ -55,7 +55,7 @@ const startTimer = () => {
 };
 
 onMounted(() => {
-  console.log('ins.offsetHeight', ins.value.offsetHeight);
+  // console.log('ins.offsetHeight', ins.value.offsetHeight);
 
   show();
   startTimer();
