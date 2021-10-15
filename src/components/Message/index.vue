@@ -16,20 +16,43 @@ export default defineComponent({
 import { ref, defineComponent, computed, onMounted } from 'vue';
 
 const props = defineProps({
+  id: String,
   message: String,
-  offset: Number
+  duration: { type: Number, default: 3000 },
+  offset: Number,
+  onClose: {
+    type: Function,
+    required: true
+  }
 });
 
 const visible = ref(false);
 
 const ins = ref(null);
 
+let timer = ref(null);
+
 const show = () => {
   visible.value = true;
 };
 
+const close = () => {
+  visible.value = false;
+  clearTimeout(timer);
+  props.onClose(props.id);
+};
+
+const startTimer = () => {
+  if (props.duration > 0) {
+    timer = setTimeout(() => {
+      close();
+    }, props.duration);
+  }
+};
+
 onMounted(() => {
   show();
+  startTimer();
 });
 
 const customStyle = computed(() => {

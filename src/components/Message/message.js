@@ -1,24 +1,44 @@
-import { createVNode, render } from 'vue';
+import { createVNode, render, nextTick } from 'vue';
 import MessageConstructor from './index.vue';
 
 const instances = [];
+let seed = 1;
 
-const Message = function (params) {
+const Message = function (options) {
   const container = document.createElement('div');
 
   let verticalOffset = 20;
+  const id = 'message_' + seed++;
 
-  for (const instance of instances) {
-    verticalOffset += instance.component.ctx.ins.offsetHeight + 16;
+  for (const { vnode } of instances) {
+    verticalOffset += vnode.component.ctx.ins.offsetHeight + 16;
   }
 
   verticalOffset += 10;
-  params.offset = verticalOffset;
-  const vm = createVNode(MessageConstructor, params);
+  options.offset = verticalOffset;
+  options.id = id;
+  options.onClose = id => {
+    const index = instances.findIndex(({ vnode }) => {
+      return vnode.props.id === id;
+    });
 
-  render(vm, container);
+    if (index === -1) {
+      return;
+    }
+    let { vnode: _vnode, container: _container } = instances[index];
+    nextTick(() => {
+      setTimeout(() => {
+        render(null, _container);
+      }, 300);
+    });
 
-  instances.push(vm);
+    instances.splice(index, 1);
+  };
+  const vnode = createVNode(MessageConstructor, options);
+
+  render(vnode, container);
+
+  instances.push({ vnode, container });
 };
 
 export default Message;

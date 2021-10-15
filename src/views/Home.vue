@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <t-dialog title="我是Title" :visible="visible"> 内容 </t-dialog>
+    <t-dialog title="我是Title" :visible="visible" @close="onClose"> 内容 </t-dialog>
     <button @click="onDialog">dialogbtn</button>
     <button @click="onMessage">message</button>
   </div>
@@ -31,6 +31,10 @@ const onDialog = () => {
 
 const onMessage = () => {
   TMessage({ message: '这是一条Message消息' });
+};
+
+const onClose = () => {
+  visible.value = false;
 };
 </script>
 

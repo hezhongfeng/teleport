@@ -14,7 +14,7 @@
         </div>
         <div class="el-dialog__footer">
           <slot name="footer">
-            <button>关闭</button>
+            <button @click="onClose">关闭</button>
           </slot>
         </div>
       </div>
@@ -31,19 +31,19 @@ export default defineComponent({
 </script>
 
 <script setup>
-import { ref } from 'vue';
-const count = ref(0);
-
 const props = defineProps({
   title: String,
   visible: Boolean
 });
+
+const emit = defineEmits(['close']);
+
+const onClose = () => {
+  emit('close');
+};
 </script>
 
 <style>
-.dialog {
-}
-
 .dialog-fade-enter-active {
   animation: dialog-fade-in var(--el-transition-duration);
 }
