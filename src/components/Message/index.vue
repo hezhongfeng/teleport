@@ -36,10 +36,6 @@ const show = () => {
   visible.value = true;
 };
 
-const getOffsetHeight = () => {
-  return ins.value.offsetHeight || 0;
-};
-
 const close = () => {
   visible.value = false;
   clearTimeout(timer);
@@ -55,8 +51,6 @@ const startTimer = () => {
 };
 
 onMounted(() => {
-  // console.log('ins.offsetHeight', ins.value.offsetHeight);
-
   show();
   startTimer();
 });
