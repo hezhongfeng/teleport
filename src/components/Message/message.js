@@ -12,7 +12,7 @@ const Message = options => {
 
   for (const { vnode } of instances) {
     // verticalOffset += vnode.component.proxy.ins.offsetHeight + 16;
-    console.log(vnode.component.proxy.ins);
+    console.log(vnode.component.proxy);
   }
 
   verticalOffset += 10;
@@ -42,6 +42,8 @@ const Message = options => {
   render(vnode, container);
 
   instances.push({ vnode, container });
+
+  document.body.appendChild(container);
 };
 
 export default Message;
