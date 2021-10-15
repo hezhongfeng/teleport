@@ -4,7 +4,7 @@ import MessageConstructor from './index.vue';
 const instances = [];
 let seed = 1;
 
-const Message = function (options) {
+const Message = options => {
   const container = document.createElement('div');
 
   let verticalOffset = 20;
@@ -17,6 +17,7 @@ const Message = function (options) {
   verticalOffset += 10;
   options.offset = verticalOffset;
   options.id = id;
+
   options.onClose = id => {
     const index = instances.findIndex(({ vnode }) => {
       return vnode.props.id === id;
@@ -34,6 +35,7 @@ const Message = function (options) {
 
     instances.splice(index, 1);
   };
+
   const vnode = createVNode(MessageConstructor, options);
 
   render(vnode, container);

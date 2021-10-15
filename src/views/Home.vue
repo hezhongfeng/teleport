@@ -9,14 +9,14 @@
 
 <script>
 import TDialog from '../components/Dialog/index.vue';
-import TMessage from '../components/Message/message';
+import Message from '../components/Message/message';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'home',
   components: {
     TDialog,
-    TMessage
+    Message
   }
 });
 </script>
@@ -30,12 +30,12 @@ const onDialog = () => {
   visible.value = !visible.value;
 };
 
-const onMessage = () => {
-  TMessage({ message: '这是一条Message消息' });
-};
-
 const onClose = () => {
   visible.value = false;
+};
+
+const onMessage = () => {
+  Message({ message: '这是一条Message消息' });
 };
 </script>
 
