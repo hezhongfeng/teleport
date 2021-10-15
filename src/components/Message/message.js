@@ -12,7 +12,7 @@ const Message = options => {
 
   for (const { vnode } of instances) {
     // verticalOffset += vnode.component.ctx.ins.offsetHeight + 16;
-    console.log(vnode.el.offsetHeight);
+    console.log(vnode);
   }
 
   verticalOffset += 10;
